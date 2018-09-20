@@ -6,6 +6,7 @@ Learn from https://github.com/spring-guides/gs-accessing-data-mysql.git
 Required
 Mysql server : 
 - pull docker image and set up
+   
    docker run -p 3306:3306 -d --name mysql -e MYSQL_ROOT_PASSWORD=password mysql/mysql-server
    docker exec -it mysql bash
    mysql -uroot -ppassword

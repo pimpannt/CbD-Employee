@@ -1,4 +1,4 @@
-# CBd-Employee
+# CbD-Employee
 Get employee list /Post new employee/Update employee profile
 
 Learn from https://github.com/spring-guides/gs-accessing-data-mysql.git

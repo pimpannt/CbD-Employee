@@ -9,6 +9,7 @@ Mysql server :
 - pull docker image and set up
    
    docker run -p 3306:3306 -d --name mysql -e MYSQL_ROOT_PASSWORD=password mysql/mysql-server
+   
    docker exec -it mysql bash
 - login as root
    mysql -uroot -ppassword 

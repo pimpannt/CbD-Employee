@@ -15,10 +15,15 @@ Mysql server :
    mysql -uroot -ppassword 
 - https://dzone.com/articles/docker-for-mac-mysql-setup
 - create new user and identify password
+
   mysql> create user 'pimpannt'@'%' identified by 'ThePassword';
+  
 - check user host 
+  
   mysql> SELECT host, user FROM mysql.user;
+  
   note: expect to get %(host) : pimpannt
+  
 - mysql> create database cbdMember;
 - mysql> grant all on cbdMember.* to 'pimpannt'@'%';
 
@@ -42,4 +47,6 @@ Scenario 1
 - Update other field with that ID
 - Get list of employee.
    
+Swagger APIs Documentation :
 
+http://localhost:8080/swagger-ui.html#/CbD-Employee

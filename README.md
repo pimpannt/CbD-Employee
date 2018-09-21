@@ -25,8 +25,7 @@ Dbeaver :
 - connect to mysql cbd database
 - set up with  username and password like sqlserver
 
-IntelliJ
-
+IntelliJ :
 Springboot Configuration
 - docker-compose.yml
 - application.properties

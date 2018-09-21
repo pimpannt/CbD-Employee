@@ -1,5 +1,9 @@
 package hello;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableSwagger2
+@Api(tags = "CbD-Employee", value = "/demo", description = "CbD Employee Demo")
 @Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
 public class MainController {
@@ -40,6 +47,15 @@ public class MainController {
 		return "Updated";
 	}
 
+	@ApiOperation(value = "Get CbD Employee List", nickname = "getAllEmployee", notes = "Note : Get CbD Employee List")
+	// Define information of HTTP response for this API for displaying on Swagger
+	@ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+			@ApiResponse(code = 400, message = "Bad Request"),
+			@ApiResponse(code = 401, message = "Unauthorized"),
+			@ApiResponse(code = 403, message = "Forbidden"),
+			@ApiResponse(code = 404, message = "Not Found"),
+			@ApiResponse(code = 500, message = "Internal server error occurred"),
+			@ApiResponse(code = 503, message = "Service Unavailable")})
 
 	@GetMapping(path="/all")
 	public @ResponseBody Iterable<Employee> getAllUsers() {

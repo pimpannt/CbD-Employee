@@ -19,20 +19,23 @@ public class MainController {
 
 	@PostMapping(path = "/add")
 	public @ResponseBody String addNewEmployee(@RequestParam String empID,
-										@RequestParam String name,@RequestParam String project,@RequestParam String hobby){
+											   @RequestParam(value = "name",defaultValue = " ") String name,
+											   @RequestParam(value = "project",defaultValue = " ") String project,
+											   @RequestParam(value = "hobby",defaultValue = " ") String hobby){
 		Employee e = new Employee();
 		e.setEMPLOYEE_ID(empID);
 		e.setNAME(name);
 		e.setPROJECT(project);
 		e.setHOBBY(hobby);
-
 		employeeRepository.save(e);
 		return "Saved";
 	}
 
 	@PutMapping(path = "/edit")
 	public @ResponseBody String editProfile(@RequestParam String empID,
-											   @RequestParam String name,@RequestParam String project,@RequestParam String hobby){
+											@RequestParam String name,
+											@RequestParam String project,
+											@RequestParam String hobby){
 		employeeRepository.update(hobby,name,project,empID);
 		return "Updated";
 	}

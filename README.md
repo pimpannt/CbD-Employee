@@ -4,6 +4,7 @@ Get employee list /Post new employee/Update employee profile
 Learn from https://github.com/spring-guides/gs-accessing-data-mysql.git
 
 Required
+
 Mysql server : 
 - pull docker image and set up
    
@@ -24,7 +25,9 @@ Dbeaver :
 - connect to mysql cbd database
 - set up with  username and password like sqlserver
 
-Springboot Configuration :
+IntelliJ
+
+Springboot Configuration
 - docker-compose.yml
 - application.properties
 

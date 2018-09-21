@@ -27,6 +27,15 @@ Dbeaver :
 Springboot Configuration :
 - docker-compose.yml
 - application.properties
+
+Testing :
+
+Scenario 1 
+- Get list of example employees for example
+- Create new employee with every feild.
+- Get list of employee again.
+- Create new employee with only employee id
+- Update other field with that ID
+- Get list of employee.
    
-   
-   
+

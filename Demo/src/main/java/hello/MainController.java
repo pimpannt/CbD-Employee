@@ -5,14 +5,13 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import javax.xml.ws.http.HTTPException;
 
 @EnableSwagger2
 @Api(tags = "CbD-Employee", value = "/demo", description = "CbD Employee Demo")
@@ -38,13 +37,21 @@ public class MainController {
 											   @RequestParam(value = "name",defaultValue = " ") String name,
 											   @RequestParam(value = "project",defaultValue = " ") String project,
 											   @RequestParam(value = "hobby",defaultValue = " ") String hobby){
-		Employee e = new Employee();
-		e.setEMPLOYEE_ID(empID);
-		e.setNAME(name);
-		e.setPROJECT(project);
-		e.setHOBBY(hobby);
-		employeeRepository.save(e);
-		return "Saved";
+		//check for Bad Request
+		if (!empID.startsWith("ZZ00")){
+			sendBadRequest();
+			return "Wrong format employee ID";
+		}
+		else {
+			Employee e = new Employee();
+			e.setEMPLOYEE_ID(empID);
+			e.setNAME(name);
+			e.setPROJECT(project);
+			e.setHOBBY(hobby);
+			employeeRepository.save(e);
+			return "Saved";
+		}
+
 	}
 
 
@@ -81,5 +88,13 @@ public class MainController {
 		return employeeRepository.findAll();
 	}
 
+	@ResponseBody
+	public ResponseEntity sendBadRequest() {
+		throw new badRequestException();
+	}
+
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason="Bad Request")
+	public class badRequestException extends RuntimeException {}
 
 }
+

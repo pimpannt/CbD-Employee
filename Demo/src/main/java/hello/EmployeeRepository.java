@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
-
+import java.util.List;
 
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called employeeRepository
@@ -22,5 +22,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Modifying
     @Transactional
     void update(String hobby,String name, String project, String empID);
+
 
 }

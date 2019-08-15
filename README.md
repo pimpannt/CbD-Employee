@@ -12,7 +12,7 @@ Mysql server :
    
    docker exec -it mysql bash
 - login as root
-   mysql -uroot -ppassword 
+   `mysql -uroot -ppassword`
 - https://dzone.com/articles/docker-for-mac-mysql-setup
 - create new user and identify password
 
